@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+params=()
+params+=("-c")
+params+=("bgBlack.blueBright")
+
+[[ $NO_COLOR == true ]] && params+=("--no-color")
+yarn clean && yarn concurrently "${params[@]}" "yarn:build:compile:* -- --watch"

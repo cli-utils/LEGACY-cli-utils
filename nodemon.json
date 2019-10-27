@@ -1,0 +1,5 @@
+{
+  "watch": ["dist/", ".test-js/"],
+  "ext": "js,json,ts,mjs",
+  "delay": 2000
+}

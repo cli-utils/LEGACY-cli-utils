@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+yarn qunit .test-js/test/**/*.test.js $1

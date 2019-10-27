@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+// @ts-check
+
+require("yargs")
+  .commandDir("./cmds")
+  .demandCommand()
+  .help().argv;

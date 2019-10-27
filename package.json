@@ -1,0 +1,60 @@
+{
+  "name": "@mike-north/cli-utils",
+  "version": "0.0.0",
+  "description": "Node.js and Bash CLI utilities, for delightful developer experiences",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/entry.js",
+  "repository": "https://github.com/mike-north/cli-utils",
+  "author": "Mike North <michael.l.north@gmail.com> (https://mike.works)",
+  "license": "BSD-2-Clause",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "bin": {
+    "./bin/cli-utils": "./bin/cli-utils"
+  },
+  "scripts": {
+    "build": "scripty",
+    "watch:build": "scripty",
+    "watch:test": "scripty",
+    "build:compile": "scripty",
+    "build:compile:cjs": "scripty",
+    "build:compile:esm": "scripty",
+    "build:compile:mjs": "scripty",
+    "build:compile:tests": "scripty",
+    "build:compile:types": "scripty",
+    "clean": "scripty",
+    "pretest": "scripty",
+    "test": "scripty"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-transform-typescript": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-typescript": "^7.6.0",
+    "@babel/register": "^7.6.2",
+    "@types/chalk": "^2.2.0",
+    "@types/node": "^12.11.7",
+    "@types/qunit": "^2.9.0",
+    "@types/string-width": "^4.0.1",
+    "@types/strip-ansi": "^5.2.1",
+    "concurrently": "^5.0.0",
+    "nodemon": "^1.19.4",
+    "qunit": "^2.9.3",
+    "rimraf": "^3.0.0",
+    "scripty": "^1.9.1",
+    "typescript": "^3.6.4"
+  },
+  "volta": {
+    "node": "13.0.1"
+  },
+  "dependencies": {
+    "power-assert-util-string-width": "^1.2.0",
+    "string-width": "^4.1.0",
+    "strip-ansi": "^5.2.0",
+    "yargs": "^14.2.0"
+  }
+}

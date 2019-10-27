@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+# yarn rimraf .test-js && yarn tsc -b ./test

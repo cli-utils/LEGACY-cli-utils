@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "outDir": "../.test-js",
+    "module": "commonjs",
+    "target": "es2017",
+    "inlineSourceMap": true
+  },
+  "include": [".", "../src"]
+}

@@ -1,0 +1,30 @@
+{
+  "presets": ["@babel/preset-typescript"],
+  "sourceMaps": "inline",
+  "env": {
+    "node": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "node": "8"
+            }
+          }
+        ]
+      ]
+    },
+    "es": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "esmodules": true
+            }
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,10 +1,10 @@
 {
-  "name": "@mike-north/cli-utils",
-  "version": "0.0.0-dev.7",
+  "name": "@cli-utils/cli-utils",
+  "version": "0.0.0-dev.8",
   "description": "Node.js and Bash CLI utilities, for delightful developer experiences",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/entry.js",
-  "repository": "https://github.com/mike-north/cli-utils",
+  "repository": "https://github.com/cli-utils/cli-utils",
   "author": "Mike North <michael.l.north@gmail.com> (https://mike.works)",
   "license": "BSD-2-Clause",
   "types": "dist/types/index.d.ts",

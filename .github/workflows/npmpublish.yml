@@ -31,6 +31,7 @@ jobs:
           scope: "@mike-north"
           access: public
       - run: yarn
+      - run: yarn build
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
@@ -47,6 +48,7 @@ jobs:
           scope: "@cli-utils"
           access: public
       - run: yarn
+      - run: yarn build
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GH_TOKEN}}

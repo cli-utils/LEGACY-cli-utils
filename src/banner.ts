@@ -28,7 +28,7 @@ const DEFAULT_BANNER_OPTIONS: IBannerOptions = {
     body: NO_OP_FMT_FUNCTION,
     title: NO_OP_FMT_FUNCTION
   },
-  plain: shouldStripColor(process)
+  plain: shouldStripColor(process, undefined)
 };
 
 function resolveBannerOptions(
@@ -36,13 +36,15 @@ function resolveBannerOptions(
 ): IBannerOptions {
   const pStyles = partial.styles;
   if (!pStyles) return DEFAULT_BANNER_OPTIONS;
+  const defaults = DEFAULT_BANNER_OPTIONS;
   return {
-    ...DEFAULT_BANNER_OPTIONS,
+    ...defaults,
     ...partial,
     styles: {
-      ...DEFAULT_BANNER_OPTIONS.styles,
+      ...defaults.styles,
       ...pStyles
-    }
+    },
+    plain: shouldStripColor(process, partial.plain)
   };
 }
 

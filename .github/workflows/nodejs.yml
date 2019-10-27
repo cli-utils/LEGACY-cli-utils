@@ -18,6 +18,9 @@ jobs:
         node-version: [8.x, 10.x, 12.x, 13.x]
 
     steps:
+    - name: install volta
+      run: curl https://get.volta.sh | bash
+
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1

@@ -29,17 +29,6 @@ QUnit.module("console banners", () => {
     );
   });
   QUnit.test("width accomodates longest string", assert => {
-    console.log(
-      createBanner(
-        "🥟",
-        "Things I ate for lunch",
-        [
-          "- some potstickers that I ordered yesterday but did not eat",
-          "- bubble tea with no ice, no sugar"
-        ],
-        { styles: { box: chalk.red } }
-      )
-    );
     assert.equal(
       createBanner("🥟", "Things I ate for lunch", [
         "- some potstickers that I ordered yesterday but did not eat",
@@ -48,6 +37,26 @@ QUnit.module("console banners", () => {
       `
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃ 🥟  Things I ate for lunch                                   ┃
+┠─────────────────────────────────────────────────────────────┨
+┃ - some potstickers that I ordered yesterday but did not eat ┃
+┃ - bubble tea with no ice, no sugar                          ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛`.trim()
+    );
+  });
+  QUnit.test("customizing title format", assert => {
+    assert.equal(
+      createBanner(
+        "🥟",
+        "Things I ate for lunch",
+        [
+          "- some potstickers that I ordered yesterday but did not eat",
+          "- bubble tea with no ice, no sugar"
+        ],
+        { styles: { title: chalk.red } }
+      ),
+      `
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 🥟  \u001b[31mThings I ate for lunch\u001b[39m                                   ┃
 ┠─────────────────────────────────────────────────────────────┨
 ┃ - some potstickers that I ordered yesterday but did not eat ┃
 ┃ - bubble tea with no ice, no sugar                          ┃

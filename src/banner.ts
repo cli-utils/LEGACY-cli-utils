@@ -17,6 +17,7 @@ export type PartialStyles = DeepPartial<Styles>;
 
 export interface IBannerOptions {
   styles: Styles;
+  plain: boolean;
 }
 
 const NO_OP_FMT_FUNCTION: FmtFunction = x => x;
@@ -26,7 +27,8 @@ const DEFAULT_BANNER_OPTIONS: IBannerOptions = {
     box: NO_OP_FMT_FUNCTION,
     body: NO_OP_FMT_FUNCTION,
     title: NO_OP_FMT_FUNCTION
-  }
+  },
+  plain: shouldStripColor(process)
 };
 
 function resolveBannerOptions(
@@ -36,6 +38,7 @@ function resolveBannerOptions(
   if (!pStyles) return DEFAULT_BANNER_OPTIONS;
   return {
     ...DEFAULT_BANNER_OPTIONS,
+    ...partial,
     styles: {
       ...DEFAULT_BANNER_OPTIONS.styles,
       ...pStyles
@@ -88,8 +91,8 @@ createBanner(${[...arguments].map(
   }
 }
 
-function fmt(f: FmtFunction, prc = process): (x: string) => string {
-  if (shouldStripColor(prc)) return x => x;
+function fmt(f: FmtFunction, options: IBannerOptions): (x: string) => string {
+  if (options.plain) return x => x;
   return (s: string) => f(s);
 }
 
@@ -108,9 +111,8 @@ function buildBoxedBanner(
   lines: string[],
   opts: IBannerOptions
 ) {
-  const boxF = fmt(opts.styles.box);
-  const bodyF = fmt(opts.styles.body);
-  const titleF = fmt(opts.styles.title);
+  const boxF = fmt(opts.styles.box, opts);
+  const bodyF = fmt(opts.styles.body, opts);
 
   const maxL = lines.reduce((max, line, i) => {
     const w = stringWidth(line);
@@ -148,7 +150,9 @@ function createBannerImpl(
   body: string[],
   opts: IBannerOptions
 ) {
-  const firstLineParts = [opts.styles.title(title)];
+  const titleF = fmt(opts.styles.title, opts);
+
+  const firstLineParts = [titleF(title)];
   if (emoji) {
     firstLineParts.unshift(emoji, "  ");
   }

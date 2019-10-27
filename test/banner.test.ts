@@ -63,4 +63,31 @@ QUnit.module("console banners", () => {
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛`.trim()
     );
   });
+  QUnit.test("omits formatting if plain option is set to 'true'", assert => {
+    assert.equal(
+      createBanner(
+        "🥟",
+        "Things I ate for lunch",
+        [
+          "- some potstickers that I ordered yesterday but did not eat",
+          "- bubble tea with no ice, no sugar"
+        ],
+        {
+          styles: {
+            title: chalk.underline,
+            body: chalk.italic,
+            box: chalk.green
+          },
+          plain: true
+        }
+      ),
+      `
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 🥟  Things I ate for lunch                                   ┃
+┠─────────────────────────────────────────────────────────────┨
+┃ - some potstickers that I ordered yesterday but did not eat ┃
+┃ - bubble tea with no ice, no sugar                          ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛`.trim()
+    );
+  });
 });

@@ -12,8 +12,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm ci
-      - run: npm test
+      - run: curl https://get.volta.sh | bash
+      - run: yarn
+      - run: yarn test
 
   publish-npm:
     needs: build
@@ -24,7 +25,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-          scope: '@mike-north'
+          scope: "@mike-north"
           access: public
       - run: yarn
       - run: yarn publish
@@ -40,7 +41,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-          scope: '@mike-north'
+          scope: "@mike-north"
           access: public
       - run: yarn
       - run: yarn publish

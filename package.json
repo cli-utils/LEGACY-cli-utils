@@ -1,6 +1,6 @@
 {
   "name": "@mike-north/cli-utils",
-  "version": "0.0.0-dev.5",
+  "version": "0.0.0-dev.6",
   "description": "Node.js and Bash CLI utilities, for delightful developer experiences",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/entry.js",

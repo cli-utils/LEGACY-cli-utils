@@ -52,7 +52,7 @@ QUnit.module("console banners", () => {
           "- some potstickers that I ordered yesterday but did not eat",
           "- bubble tea with no ice, no sugar"
         ],
-        { styles: { title: chalk.red } }
+        { styles: { title: chalk.red }, plain: false }
       ),
       `
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓

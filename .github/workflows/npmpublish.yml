@@ -15,6 +15,9 @@ jobs:
       - run: curl https://get.volta.sh | bash
       - run: yarn
       - run: yarn test
+        env:
+          CI: true
+          FORCE_COLOR: 2
 
   publish-npm:
     needs: build

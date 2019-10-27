@@ -3,11 +3,11 @@ name: Node CI
 on:
   push:
     branches:
-    - master
-    - release/*
+      - master
+      - release/*
   pull_request:
     branches:
-    - master
+      - master
 
 jobs:
   build:
@@ -18,19 +18,19 @@ jobs:
         node-version: [8.x, 10.x, 12.x, 13.x]
 
     steps:
-    - name: install volta
-      run: curl https://get.volta.sh | bash
+      - name: install volta
+        run: curl https://get.volta.sh | bash
 
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
-      run: |
-        yarn
-        yarn build
-        yarn test
-      env:
-        CI: true
-        NO_COLOR: true
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install, build, and test
+        run: |
+          yarn
+          yarn build
+          yarn test
+        env:
+          CI: true
+          FORCE_COLOR: 2

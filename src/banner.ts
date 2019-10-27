@@ -3,7 +3,7 @@ import stringWidth from "string-width";
 import { repeat } from "./utils/string";
 import UnreachableError from "./error/unreachable";
 import { DeepPartial } from "./types";
-import { shouldStripColor } from "./utils/color";
+import * as supportsColor from "supports-color";
 
 export type FmtFunction = (...text: string[]) => string;
 
@@ -28,7 +28,7 @@ const DEFAULT_BANNER_OPTIONS: IBannerOptions = {
     body: NO_OP_FMT_FUNCTION,
     title: NO_OP_FMT_FUNCTION
   },
-  plain: shouldStripColor(process, undefined)
+  plain: supportsColor.stdout
 };
 
 function resolveBannerOptions(
@@ -43,8 +43,7 @@ function resolveBannerOptions(
     styles: {
       ...defaults.styles,
       ...pStyles
-    },
-    plain: shouldStripColor(process, partial.plain)
+    }
   };
 }
 
@@ -94,7 +93,7 @@ createBanner(${[...arguments].map(
 }
 
 function fmt(f: FmtFunction, options: IBannerOptions): (x: string) => string {
-  if (options.plain) return x => x;
+  if (options.plain) return NO_OP_FMT_FUNCTION;
   return (s: string) => f(s);
 }
 
@@ -153,7 +152,6 @@ function createBannerImpl(
   opts: IBannerOptions
 ) {
   const titleF = fmt(opts.styles.title, opts);
-
   const firstLineParts = [titleF(title)];
   if (emoji) {
     firstLineParts.unshift(emoji, "  ");

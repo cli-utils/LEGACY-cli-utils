@@ -44,7 +44,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-          scope: "@mike-north"
+          scope: "@cli-utils"
           access: public
       - run: yarn
       - run: yarn publish
